@@ -1,0 +1,9 @@
+*~
+*.pcm
+*.d
+*.so
+*#
+*.root
+inputs/
+hst_output/
+sum_output/
