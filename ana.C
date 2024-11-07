@@ -1,4 +1,3 @@
-
 #include <TROOT.h>
 #include <TChain.h>
 #include <TFile.h>
@@ -35,16 +34,6 @@ void ana(int sample=0){
     m_selec.SetData(0); //MC=0, data=1
     m_selec.SetYear(2016);
   }
-
-   if(sample==2){
-    chain->Add("inputs/HiggsToZZTo4L_M-125.root");
-    hstfilename = "hst_output/hst_Higgs.root";
-    sumfilename = "sum_output/sum_Higgs.txt";
-    m_selec.SetData(0); //MC=0, data=1
-    m_selec.SetYear(2016);
-  }
-
- 
   
   std::cout<<"Output files are "<<hstfilename<<" and "<<sumfilename<<std::endl;
   // Set some more options.. set the output file names.

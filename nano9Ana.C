@@ -42,8 +42,8 @@ void nano9Ana::SlaveTerminate()
   // have been processed. When running with PROOF SlaveTerminate() is called
   // on each slave server.
   
-   _HstFile->Write();
-   _HstFile->Close();
+  _HstFile->Write();
+  _HstFile->Close();
 
   //The following lines are displayed on the root prompt.
   cout<<"Total events ran = "<<nEvtRan<<endl;
@@ -57,9 +57,9 @@ void nano9Ana::SlaveTerminate()
 
 void nano9Ana::Terminate()
 {
-   // The Terminate() function is the last function to be called during
-   // a query. It always runs on the client, it can be used to present
-   // the results graphically or save the results to file. 
+  // The Terminate() function is the last function to be called during
+  // a query. It always runs on the client, it can be used to present
+  // the results graphically or save the results to file. 
 }
 
 Bool_t nano9Ana::Process(Long64_t entry)
@@ -95,7 +95,7 @@ Bool_t nano9Ana::Process(Long64_t entry)
   GoodEvt2017 = (_year==2017 ? *Flag_goodVertices && *Flag_globalSuperTightHalo2016Filter && *Flag_HBHENoiseFilter && *Flag_HBHENoiseIsoFilter && *Flag_EcalDeadCellTriggerPrimitiveFilter && *Flag_BadPFMuonFilter && (_data ? *Flag_eeBadScFilter : 1) : 1);
   GoodEvt2016 = (_year==2016 ? *Flag_goodVertices && *Flag_globalSuperTightHalo2016Filter && *Flag_HBHENoiseFilter && *Flag_HBHENoiseIsoFilter && *Flag_EcalDeadCellTriggerPrimitiveFilter && *Flag_BadPFMuonFilter && (_data ? *Flag_eeBadScFilter : 1) : 1);
   
-   GoodEvt = GoodEvt2018 && GoodEvt2017 && GoodEvt2016;
+  GoodEvt = GoodEvt2018 && GoodEvt2017 && GoodEvt2016;
   
   nEvtRan++;                             //Total number of events containing everything (including the trash events).
   
@@ -112,8 +112,8 @@ Bool_t nano9Ana::Process(Long64_t entry)
     int nmu = 0;                         // This counts the number of muons in each event.
     goodMu.clear();                      // Make sure to empty the array from previous event.
     for(unsigned int i=0; i<(*nMuon); i++){
-                                         // This loop runs over all the muon candidates. Some of them will pass our selection criteria.
-                                         // These will be stored in the goodMu array.
+      // This loop runs over all the muon candidates. Some of them will pass our selection criteria.
+      // These will be stored in the goodMu array.
       Lepton temp;                       // 'temp' is the i-th candidate.
       temp.v.SetPtEtaPhiM(Muon_pt[i],Muon_eta[i],Muon_phi[i],0.105); //the muon mass in GeV is 0.105
       temp.id = -13*Muon_charge[i];    //pdgID for mu- = 13, pdgID for mu+ = -13  
@@ -148,15 +148,15 @@ Bool_t nano9Ana::Process(Long64_t entry)
     
 
     
-   //Other arrays, such as RecoEle, GenMu, GenEle can be constructed here.
+    //Other arrays, such as RecoEle, GenMu, GenEle can be constructed here.
 
 
-   //goodElectron array :
+    //goodElectron array :
     int nelec = 0;
     goodElectron.clear();
     for(unsigned int i=0; i<(*nElectron); i++){
 
-    Lepton temp;
+      Lepton temp;
       temp.v.SetPtEtaPhiM(Electron_pt[i],Electron_eta[i],Electron_phi[i],Electron_mass[i]);
       temp.id = -11*Electron_charge[i];
       temp.ind = i;
@@ -179,7 +179,7 @@ Bool_t nano9Ana::Process(Long64_t entry)
     goodPhoton.clear();
     for(unsigned int i=0; i<(*nPhoton); i++){
 
-    Lepton temp;
+      Lepton temp;
       temp.v.SetPtEtaPhiM(Photon_pt[i],Photon_eta[i],Photon_phi[i],Photon_mass[i]);
 
       bool passCuts = temp.v.Pt()>15 && fabs(temp.v.Eta())<2.4;
@@ -200,7 +200,7 @@ Bool_t nano9Ana::Process(Long64_t entry)
     btagged_jet.clear();
     for(unsigned int i=0; i<(*nJet); i++){
 
-    Lepton temp;
+      Lepton temp;
       temp.v.SetPtEtaPhiM(Jet_pt[i],Jet_eta[i],Jet_phi[i],Jet_mass[i]);
 
       bool passCuts = temp.v.Pt()>30 && fabs(temp.v.Eta())<3.0;
@@ -209,10 +209,10 @@ Bool_t nano9Ana::Process(Long64_t entry)
 	goodJet.push_back(temp);
       }
 
-       if(passCuts && Jet_btagDeepFlavB[i]>0.4184){
-	 btagged_jet.push_back(temp);
+      if(passCuts && Jet_btagDeepFlavB[i]>0.4184){
+	btagged_jet.push_back(temp);
 	 
-       }
+      }
     }
    
     Sortpt(goodJet);
@@ -284,12 +284,12 @@ Bool_t nano9Ana::Process(Long64_t entry)
     
     //Plotting dphi, dR and  M_{#mu#mu} between the leading and subleading muon
     if((int)goodMu.size()>1){
-    float dphi = goodMu.at(0).v.DeltaPhi(goodMu.at(1).v);
-    float dR = goodMu.at(0).v.DeltaR(goodMu.at(1).v);
-    h.dimuon[0]->Fill(dphi);
-    h.dimuon[1]->Fill(dR);
-    float dimu_invmass = (goodMu.at(0).v+goodMu.at(1).v).M();
-    h.dimuon[2]->Fill(dimu_invmass);
+      float dphi = goodMu.at(0).v.DeltaPhi(goodMu.at(1).v);
+      float dR = goodMu.at(0).v.DeltaR(goodMu.at(1).v);
+      h.dimuon[0]->Fill(dphi);
+      h.dimuon[1]->Fill(dR);
+      float dimu_invmass = (goodMu.at(0).v+goodMu.at(1).v).M();
+      h.dimuon[2]->Fill(dimu_invmass);
     }  
 
 
@@ -330,7 +330,7 @@ Bool_t nano9Ana::Process(Long64_t entry)
     
     
 
-     //#######################################################################
+    //#######################################################################
 
 
 
@@ -442,7 +442,7 @@ Bool_t nano9Ana::Process(Long64_t entry)
       }
     }
 
- //Finding match of each muon to its closest genmuon
+    //Finding match of each muon to its closest genmuon
 
     std::pair<vector<int>, vector<float>> result_mu = dR_matching(goodMu, genMu);
     vector<int> mu_matchto_genmu = result_mu.first;
@@ -473,7 +473,7 @@ Bool_t nano9Ana::Process(Long64_t entry)
       h.genMuProp[1]->Fill(genMu.at(0).v.Eta());
       h.genMuProp[2]->Fill(genMu.at(0).v.Eta());
 
-      }
+    }
 
     
 
@@ -573,14 +573,14 @@ std::pair<vector<int>, vector<float>> nano9Ana::dR_matching(vector<Lepton> vec1,
   
   if(vec1.size()>0 && vec2.size()>0){
     for(int i=0; i<(int)vec1.size(); i++){
-    for(int j=0; j<(int)vec2.size(); j++){
-      float delR = (vec1.at(i).v).DeltaR(vec2.at(j).v);
-      if(delR<delR_min){
-	delR_min=delR; match=j;
+      for(int j=0; j<(int)vec2.size(); j++){
+	float delR = (vec1.at(i).v).DeltaR(vec2.at(j).v);
+	if(delR<delR_min){
+	  delR_min=delR; match=j;
+	}
       }
-    }
-    foundMatch.push_back(match);
-    delRmin.push_back(delR_min);
+      foundMatch.push_back(match);
+      delRmin.push_back(delR_min);
     }
   }
   return std::make_pair(foundMatch, delRmin);
