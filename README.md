@@ -1,5 +1,5 @@
 ## nanoAOD_v9_Analyser
-### Basic analyser codes for nanoAOD root files compatible with nanoAOD version 9.
+### Basic scriopts for analysing nanoAOD root files compatible with nanoAOD version 9.
 
 - The input ntuples to be analysed are stored in the ``nanoAOD_v9_Analyser/inputs`` directory.
 - The analysis codes are stored in the ``nanoAOD_v9_Analyser/`` directory. The main code (which does analysis and fills histograms) is in the nano9Ana class. This class is declared and described in ``nano9Ana.h`` and ``nano9Ana.C``.
