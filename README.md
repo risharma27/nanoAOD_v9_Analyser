@@ -20,4 +20,4 @@ This compiles the C code and makes it executable. Once loading is complete, exec
 - ``ana.C`` is the driver script.
 - The argument inside ana.C() specifies which input file to use.
 - Make sure that the input file paths are defined in ana.C before running this script.
-- This will produce a ``hst_<process name>.root`` file in ``nanoAOD_v9_Analyzer/hst_outputs`` directory and a ``sum_<process name>.txt`` file in ``nanoAOD_v9_Analyzer/sum_output`` directory.
+- This will produce an ``hst_<process name>.root`` file in ``nanoAOD_v9_Analyzer/hst_output`` directory and a ``sum_<process name>.txt`` file in ``nanoAOD_v9_Analyzer/sum_output`` directory.
